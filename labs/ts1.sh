@@ -2,7 +2,6 @@
 #
 # Filesystem full
 #
-exec &> /tmp/ts1.log
 
 rm -f /mnt/file.fs 2> /dev/null
 dd if=/dev/zero of=/mnt/file.fs bs=1024 count=102400
