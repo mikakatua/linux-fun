@@ -1,10 +1,16 @@
 #!/bin/bash
-
+#
 # Filesystem full
+#
+exec &> /tmp/ts1.log
+
+rm -f /mnt/file.fs 2> /dev/null
 dd if=/dev/zero of=/mnt/file.fs bs=1024 count=102400
 mkfs.ext4 -F /mnt/file.fs
-mkdir /data 2> /dev/null
+
 umount /data 2> /dev/null
+rm -rf /data 2> /dev/null
+mkdir /data
 mount /mnt/file.fs /data
 
 dir=/usr/src/kernels/$(uname -r)
