@@ -21,7 +21,7 @@ chage -M 120 waldo
 # chage -l waldo
 
 # Create a system user (lower UID) without login shell
-useradd -c "Operator" -r -g backup -G dba -M -d / -s /bin/nologin sysop
+useradd -c "Operator" -r -g backup -G dba -M -d / -s /sbin/nologin sysop
 
 # Create a user with specific UID and the home in /opt
 # A group with the same name as the user will also be created
