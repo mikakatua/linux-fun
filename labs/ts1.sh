@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Filesystem full
+# Disk full error
 #
 
 rm -f /mnt/file.fs 2> /dev/null
