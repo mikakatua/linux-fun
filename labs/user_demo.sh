@@ -25,7 +25,7 @@ useradd -c "Operator" -r -g backup -G dba -M -d / -s /bin/nologin sysop
 
 # Create a user with specific UID and the home in /opt
 # A group with the same name as the user will also be created
-useradd -c "Power User" -u 2001 -G developer,dba -b /opt super
+useradd -c "Power User" -u 2001 -G backup,developer,dba -b /opt super
 
 # Set the user password. Read it from STDIN
 echo p0w3rU | passwd super --stdin
