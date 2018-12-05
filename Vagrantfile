@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
     server.vm.box_version = BOX_VERSION
     server.vm.network "public_network", ip: "10.100.0.254"
     server.vm.synced_folder ".", "/vagrant"
-    server.vm.provision "shell", path: "setup.sh", args: "server1"
+    server.vm.provision "shell", path: "https://raw.githubusercontent.com/mikakatua/linux-fun/master/setup.sh", args: "server1"
     server.vm.provider :virtualbox do |vb|
       vb.name = "server1"
       vb.memory = 512
