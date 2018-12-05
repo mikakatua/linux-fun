@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
       station.vm.box = BOX_NAME
       station.vm.box_version = BOX_VERSION
       station.vm.network "public_network", ip: "10.100.0.#{i}"
-      station.vm.provision "shell", path: "setup.sh", args: "station#{i}"
+      station.vm.provision "shell", path: "https://raw.githubusercontent.com/mikakatua/linux-fun/master/setup.sh", args: "station#{i}"
       station.vm.provider :virtualbox do |vb|
         vb.name = "station#{i}"
         vb.memory = 512
