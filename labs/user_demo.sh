@@ -4,7 +4,7 @@
 groupadd -g 5000 developer
 groupadd -g 5001 dba
 
-# Create a system group (lower GID)
+# Create a system group (lower GID<1000)
 groupadd -r backup
 
 # Create a user with supplementary groups
@@ -20,7 +20,7 @@ chage -M 120 waldo
 # To list password aging use
 # chage -l waldo
 
-# Create a system user (lower UID) without login shell
+# Create a system user (lower UID<1000) without login shell
 useradd -c "Operator" -r -g backup -G dba -M -d / -s /sbin/nologin sysop
 
 # Create a user with specific UID and the home in /opt
