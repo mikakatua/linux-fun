@@ -72,22 +72,17 @@ server=8.8.4.4
 EOD
   systemctl restart dnsmasq 
 
+  # Disable firewall
+  systemctl stop firewalld
+  systemctl disable firewalld
+  
   # Reconfigure network
   nmcli con mod "System eth0" ipv4.dns "" ipv4.ignore-auto-dns yes
   nmcli con mod "System eth1" ipv4.dns "127.0.0.1"
   systemctl restart network
-  
-  # Disable firewall
-  systemctl stop firewalld
-  systemctl disable firewalld
   ;;
 
-station*)
-  # Reconfigure network
-  nmcli con mod "System eth0" ipv4.dns "" ipv4.ignore-auto-dns yes
-  nmcli con mod "System eth1" ipv4.dns "10.100.0.254"
-  systemctl restart network
-  
+station*) 
   # Add server repo
   cat >/etc/yum.repos.d/rhel7-dvd.repo <<EOD
 [rhel7-dvd]
@@ -101,5 +96,10 @@ EOD
   # Script to run the labs
   curl -so /usr/local/bin/labs.sh "https://raw.githubusercontent.com/mikakatua/linux-fun/master/labs.sh"
   chmod a+x /usr/local/bin/labs.sh
+
+  # Reconfigure network
+  nmcli con mod "System eth0" ipv4.dns "" ipv4.ignore-auto-dns yes
+  nmcli con mod "System eth1" ipv4.dns "10.100.0.254"
+  systemctl restart network
   ;;
 esac
